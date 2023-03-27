@@ -1,0 +1,34 @@
+{{ block title }}Results{{ endblock }}
+{{ block content }}
+
+
+{{ if player.round_number != Constants.vote_round }}
+    <p>
+        Your real effort income is {{ player.real_effort_income }},
+        of which you reported {{ player.reported_income }}.
+        Your behavior is audited {{ player.if_audited }}.
+        Your group total tax is {{ group.total_tax_paid }},
+        resulting in an individual share of {{ group.individual_share }}.
+        Your profit is therefore {{ player.payoff }}.
+    </p>
+
+{{ else }}
+    <p>
+        According to the vote result,
+        {{ if group.treatment == 'ExoYes' }}
+        the computer chooses to increase the audit probability to {{ Constants.modified_audit_prob }} in your group.
+        {{ elif group.treatment == 'ExoNo' }}
+        the computer chooses to keep the audit probability as {{ Constants.default_audit_prob }} in your group.
+        {{ elif group.treatment == 'EndoYes' }}
+        all members in your group decide to increase the audit probability to {{ Constants.modified_audit_prob }}.
+        {{ else }}
+        all members in your group decide to keep the audit probability as {{ Constants.default_audit_prob }}.
+        {{ endif }}
+    </p>
+{{ endif }}
+
+    {{ next_button }}
+
+{{ endblock }}
+
+

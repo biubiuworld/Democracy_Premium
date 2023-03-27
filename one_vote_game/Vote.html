@@ -1,0 +1,20 @@
+{{ extends "global/Page.html" }}
+{{ block title }}Vote{{ endblock }}
+{{ block content }}
+
+
+
+    <p>
+        Now you and your group members decide to whether increase the audit probability from {{ Constants.default_audit_prob }}
+        to {{ Constants.modified_audit_prob }}. You could vote for 'Yes' or 'No'. The vote result is based on marjority rule.
+    </p>
+    <p>
+        There is 50% chance that your group decision is overriden by the computer. If so, the computer will randomly choose whether
+        to increase the audit probability in your group.
+    </p>
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+{{ endblock }}

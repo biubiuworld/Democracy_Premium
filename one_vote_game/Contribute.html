@@ -1,0 +1,33 @@
+{{ extends "global/Page.html" }}
+{{ block title }}Report You Income (Round {{ player.round_number }}) {{ endblock }}
+{{ block content }}
+
+
+<p>
+    You have tried {{ player.num_trials }} puzzles, successfully solved {{ player.num_correct }},
+    and failed {{ player.num_failed }}.
+</p>
+       <p>
+        Your income through real effort tasks this round is {{ player.real_effort_income }}
+    </p>
+
+    <p>
+        Now you need to report your pre-tax income in the following blank.
+        You could misreport your income. After collecting the tax with
+        rate {{ Constants.tax_rate }}, we will redistribute the payoff within a
+        {{ Constants.players_per_group }}-player group, with an efficiency factor of
+        {{ Constants.redistribution_multiplier }}.
+    </p>
+    <p>
+    Please note, there is
+        {{ group.audit_weight }}
+        possibility to be audited. Once you report a lower income
+        and are discovered by the auditor, you will receive a punishment with {{ Constants.penalty_multiplier }} for every dollar
+        you should have paid.
+    </p>
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+{{ endblock }}
